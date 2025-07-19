@@ -1,4 +1,5 @@
 <?php
+
 namespace Lianlu\Lianlu\Clients;
 
 use Lianlu\Lianlu\Common\Constants;
@@ -23,7 +24,7 @@ class Product
      */
     public static function Balance(Credential $credential)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."product/balance";
+        $url = Constants::HTTP . Constants::DOMAIN_API . self::$prefix . "product/balance";
         $inputObj = new models\Balance();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -44,13 +45,36 @@ class Product
      */
     public static function SignGet(Credential $credential)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."product/sign/get";
+        $url = Constants::HTTP . Constants::DOMAIN_API . self::$prefix . "product/sign/get";
         $inputObj = new models\Sign();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
         $inputObj->SetSignType(self::$SignType);
         $inputObj->SetVersion($credential->getVersion());
         $inputObj->SetTimeStamp(Utils::getMillisecond());
+
+        $inputObj->SetSign($inputObj, $credential->getAppKey());
+        $json = $inputObj->ToJson();
+        return Request::postCurl($json, $url);
+    }
+
+    /**
+     * 删除签名
+     * @return bool|string
+     * @throws LianLuException
+     * @var mixed
+
+     */
+    public static function SignDelete(Credential $credential, string|int $signId)
+    {
+        $url = Constants::HTTP . Constants::DOMAIN_API . self::$prefix . "product/sign/delete";
+        $inputObj = new models\Sign();
+        $inputObj->SetAppid($credential->GetAppId());
+        $inputObj->SetMch_id($credential->GetMchId());
+        $inputObj->SetSignType(self::$SignType);
+        $inputObj->SetVersion($credential->getVersion());
+        $inputObj->SetTimeStamp(Utils::getMillisecond());
+        $inputObj->SetSignId($signId);
 
         $inputObj->SetSign($inputObj, $credential->getAppKey());
         $json = $inputObj->ToJson();
@@ -66,7 +90,7 @@ class Product
      */
     public static function SignCreate(Credential $credential, models\Sign $sign)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."product/sign/create";
+        $url = Constants::HTTP . Constants::DOMAIN_API . self::$prefix . "product/sign/create";
         $inputObj = new models\Sign();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -88,7 +112,7 @@ class Product
      */
     public static function TemplateGet(Credential $credential)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."product/template/get";
+        $url = Constants::HTTP . Constants::DOMAIN_API . self::$prefix . "product/template/get";
         $inputObj = new models\Template();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -109,7 +133,7 @@ class Product
      */
     public static function TemplateGetById(Credential $credential, int $TemplateId)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."product/template/getById";
+        $url = Constants::HTTP . Constants::DOMAIN_API . self::$prefix . "product/template/getById";
         $inputObj = new models\Template();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -132,7 +156,7 @@ class Product
      */
     public static function SmsTemplateCreate(Credential $credential, models\Template $template)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."product/template/create";
+        $url = Constants::HTTP . Constants::DOMAIN_API . self::$prefix . "product/template/create";
         $inputObj = new models\Template();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -149,6 +173,56 @@ class Product
     }
 
     /**
+     * 编辑短信模板
+     * @param Credential $credential
+     * @param models\Template $template
+     * @return bool|string
+     * @throws LianLuException
+     */
+    public static function SmsTemplateUpdate(Credential $credential, models\Template $template)
+    {
+        $url = Constants::HTTP . Constants::DOMAIN_API . self::$prefix . "product/template/update";
+        $inputObj = new models\Template();
+        $inputObj->SetAppid($credential->GetAppId());
+        $inputObj->SetMch_id($credential->GetMchId());
+        $inputObj->SetSignType(self::$SignType);
+        $inputObj->SetVersion($credential->getVersion());
+        $inputObj->SetContent($template->GetContent());
+        $inputObj->SetTemplateId($template->getTemplateId());
+        $inputObj->SetTemplateName($template->GetTemplateName());
+        $inputObj->SetSignId($template->GetSignId());
+        $inputObj->SetTimeStamp(Utils::getMillisecond());
+
+        $inputObj->SetSign($inputObj, $credential->getAppKey());
+        $json = $inputObj->ToJson();
+        return Request::postCurl($json, $url);
+    }
+
+    /**
+     * 删除短信模板
+     * @param Credential $credential
+     * @param string|int $templateId
+     * @return bool|string
+     * @throws LianLuException
+     */
+    public static function SmsTemplateDelete(Credential $credential, string|int $templateId)
+    {
+        $url = Constants::HTTP . Constants::DOMAIN_API . self::$prefix . "product/template/delete";
+        $inputObj = new models\Template();
+        $inputObj->SetAppid($credential->GetAppId());
+        $inputObj->SetMch_id($credential->GetMchId());
+        $inputObj->SetSignType(self::$SignType);
+        $inputObj->SetVersion($credential->getVersion());
+        $inputObj->SetTemplateId($templateId);
+        $inputObj->SetTimeStamp(Utils::getMillisecond());
+
+        $inputObj->SetSign($inputObj, $credential->getAppKey());
+
+        $json = $inputObj->toJson();
+        return Request::postCurl($json, $url);
+    }
+
+    /**
      * 创建语音模板
      * @param Credential $credential
      * @param models\Template $template
@@ -157,7 +231,7 @@ class Product
      */
     public static function VoiceTemplateCreate(Credential $credential, models\Template $template)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."voice/template/create";
+        $url = Constants::HTTP . Constants::DOMAIN_API . self::$prefix . "voice/template/create";
         $inputObj = new models\Template();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -182,7 +256,7 @@ class Product
      */
     public static function Report(Credential $credential, models\Report $report)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."trade/report";
+        $url = Constants::HTTP . Constants::DOMAIN_API . self::$prefix . "trade/report";
         $inputObj = new models\Report();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -191,10 +265,10 @@ class Product
         $inputObj->SetTimeStamp(Utils::getMillisecond());
         $inputObj->SetTaskId($report->GetTaskId());
 
-        if(@$report->GetPageNo()) {
+        if (@$report->GetPageNo()) {
             $inputObj->SetPageNo($report->GetPageNo());
         }
-        if(@$report->GetPageSize()) {
+        if (@$report->GetPageSize()) {
             $inputObj->SetPageSize($report->GetPageSize());
         }
 
@@ -212,7 +286,7 @@ class Product
      */
     public static function reply(Credential $credential, models\Report $report)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."trade/reply";
+        $url = Constants::HTTP . Constants::DOMAIN_API . self::$prefix . "trade/reply";
         $inputObj = new models\Report();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -221,10 +295,10 @@ class Product
         $inputObj->SetTimeStamp(Utils::getMillisecond());
         $inputObj->SetTaskId($report->GetTaskId());
 
-        if(@$report->GetPageNo()) {
+        if (@$report->GetPageNo()) {
             $inputObj->SetPageNo($report->GetPageNo());
         }
-        if(@$report->GetPageSize()) {
+        if (@$report->GetPageSize()) {
             $inputObj->SetPageSize($report->GetPageSize());
         }
 

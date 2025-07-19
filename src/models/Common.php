@@ -1,5 +1,7 @@
 <?php
+
 namespace Lianlu\Lianlu\models;
+
 use Lianlu\Lianlu\Common\Utils;
 
 class Common extends Utils
@@ -9,6 +11,14 @@ class Common extends Utils
         $this->values['MchId'] = $value;
     }
     public function GetMch_id()
+    {
+        return $this->values['MchId'];
+    }
+    public function SetMchId($value)
+    {
+        $this->values['MchId'] = $value;
+    }
+    public function GetMchId()
     {
         return $this->values['MchId'];
     }

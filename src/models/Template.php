@@ -49,4 +49,12 @@ class Template extends Common
         return $this->values['SessionContext'];
     }
 
+    public function SetTemplateId($value)
+    {
+        return $this->values['TemplateId'] = $value;
+    }
+    public function GetTemplateId()
+    {
+        return $this->values['TemplateId'];
+    }
 }
