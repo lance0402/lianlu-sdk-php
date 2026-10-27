@@ -23,7 +23,7 @@ class InterSend{
      */
     public static function Send(Credential $credential, models\Inter $inter)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."send";
+        $url = $credential->getBaseUrl().self::$prefix."send";
         $inputObj = new models\Inter();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());

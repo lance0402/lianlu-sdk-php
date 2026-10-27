@@ -23,7 +23,7 @@ class VoiceSend{
      */
     public static function TemplateSend(Credential $credential, models\Voice $voice)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."send";
+        $url = $credential->getBaseUrl().self::$prefix."send";
         $inputObj = new models\Voice();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -55,7 +55,7 @@ class VoiceSend{
      */
     public static function NormalSend(Credential $credential, models\Voice $voice)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."normal/send";
+        $url = $credential->getBaseUrl().self::$prefix."normal/send";
         $inputObj = new models\Voice();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());

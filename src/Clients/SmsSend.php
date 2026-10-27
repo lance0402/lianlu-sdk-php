@@ -23,7 +23,7 @@ class SmsSend{
      */
     public static function NormalSend(Credential $credential, models\Sms $sms)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."normal/send";
+        $url = $credential->getBaseUrl().self::$prefix."normal/send";
         $inputObj = new models\Sms();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -59,7 +59,7 @@ class SmsSend{
      */
     public static function PersonalSend(Credential $credential, models\Sms $sms)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."personal/send";
+        $url = $credential->getBaseUrl().self::$prefix."personal/send";
         $inputObj = new models\Sms();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -99,7 +99,7 @@ class SmsSend{
      */
     public static function TemplateSend(Credential $credential, models\Sms $sms)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."template/send";
+        $url = $credential->getBaseUrl().self::$prefix."template/send";
         $inputObj = new models\Sms();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());

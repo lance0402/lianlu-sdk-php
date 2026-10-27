@@ -23,7 +23,7 @@ class ShortLink{
      */
     public static function create(Credential $credential, models\Short $short)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."create";
+        $url = $credential->getBaseUrl().self::$prefix."create";
         $inputObj = new models\Short();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -61,7 +61,7 @@ class ShortLink{
      */
     public static function batchCreate(Credential $credential, models\Short $short)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."batchCreate";
+        $url = $credential->getBaseUrl().self::$prefix."batchCreate";
         $inputObj = new models\Short();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -104,7 +104,7 @@ class ShortLink{
      */
     public static function delete(Credential $credential, models\Short $short)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."delete";
+        $url = $credential->getBaseUrl().self::$prefix."delete";
         $inputObj = new models\Short();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -126,7 +126,7 @@ class ShortLink{
      */
     public static function queryInfo(Credential $credential)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."queryInfo";
+        $url = $credential->getBaseUrl().self::$prefix."queryInfo";
         $inputObj = new models\Short();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -148,7 +148,7 @@ class ShortLink{
      */
     public static function queryAccess(Credential $credential, models\Short $short)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."queryAccess";
+        $url = $credential->getBaseUrl().self::$prefix."queryAccess";
         $inputObj = new models\Short();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -197,7 +197,7 @@ class ShortLink{
      */
     public static function queryShortLink(Credential $credential, models\Short $short)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."queryShortLink";
+        $url = $credential->getBaseUrl().self::$prefix."queryShortLink";
         $inputObj = new models\Short();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());

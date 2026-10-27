@@ -23,7 +23,7 @@ class Product
      */
     public static function Balance(Credential $credential)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."product/balance";
+        $url = $credential->getBaseUrl().self::$prefix."product/balance";
         $inputObj = new models\Balance();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -44,7 +44,7 @@ class Product
      */
     public static function SignGet(Credential $credential)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."product/sign/get";
+        $url = $credential->getBaseUrl().self::$prefix."product/sign/get";
         $inputObj = new models\Sign();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -66,7 +66,7 @@ class Product
      */
     public static function SignCreate(Credential $credential, models\Sign $sign)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."product/sign/create";
+        $url = $credential->getBaseUrl().self::$prefix."product/sign/create";
         $inputObj = new models\Sign();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -95,7 +95,7 @@ class Product
      */
     public static function TemplateGet(Credential $credential)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."product/template/get";
+        $url = $credential->getBaseUrl().self::$prefix."product/template/get";
         $inputObj = new models\Template();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -114,9 +114,9 @@ class Product
      * @throws LianLuException
      * @var mixed
      */
-    public static function TemplateGetById(Credential $credential, int $TemplateId)
+    public static function TemplateGetById(Credential $credential, $TemplateId)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."product/template/getById";
+        $url = $credential->getBaseUrl().self::$prefix."product/template/getById";
         $inputObj = new models\Template();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -139,7 +139,7 @@ class Product
      */
     public static function SmsTemplateCreate(Credential $credential, models\Template $template)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."product/template/create";
+        $url = $credential->getBaseUrl().self::$prefix."product/template/create";
         $inputObj = new models\Template();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -164,7 +164,7 @@ class Product
      */
     public static function VoiceTemplateCreate(Credential $credential, models\Template $template)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."voice/template/create";
+        $url = $credential->getBaseUrl().self::$prefix."voice/template/create";
         $inputObj = new models\Template();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -189,7 +189,7 @@ class Product
      */
     public static function Report(Credential $credential, models\Report $report)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."trade/report";
+        $url = $credential->getBaseUrl().self::$prefix."trade/report";
         $inputObj = new models\Report();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -219,7 +219,7 @@ class Product
      */
     public static function reply(Credential $credential, models\Report $report)
     {
-        $url = Constants::HTTP.Constants::DOMAIN_API.self::$prefix."trade/reply";
+        $url = $credential->getBaseUrl().self::$prefix."trade/reply";
         $inputObj = new models\Report();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());

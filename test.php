@@ -15,7 +15,13 @@ use Lianlu\Lianlu\models\Sign;
 use Lianlu\Lianlu\models\Sms;
 
 
-//$cred = new Credential("", "", "");
+$cred = new Credential("", "", "", "apis.shlianlu.com:9443");
+try {
+    $input = Product::Balance($cred);
+    print_r($input);
+} catch (LianLuException $e) {
+}
+
 //// getReport
 ////$input = new \Lianlu\Lianlu\models\Report();
 ////$input->SetTaskId("");

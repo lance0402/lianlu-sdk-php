@@ -26,7 +26,7 @@ class Identify
      */
     public static function idCard2(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."idCard/auth";
+        $url = $credential->getBaseUrl().self::$prefix."idCard/auth";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -51,7 +51,7 @@ class Identify
      */
     public static function idCard4(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."idCard/auth/valid";
+        $url = $credential->getBaseUrl().self::$prefix."idCard/auth/valid";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -78,7 +78,7 @@ class Identify
      */
     public static function isp2(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."isp/auth";
+        $url = $credential->getBaseUrl().self::$prefix."isp/auth";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -103,7 +103,7 @@ class Identify
      */
     public static function isp3(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."isp/auth/three";
+        $url = $credential->getBaseUrl().self::$prefix."isp/auth/three";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -129,7 +129,7 @@ class Identify
      */
     public static function isp3d(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."isp/auth/three/detail";
+        $url = $credential->getBaseUrl().self::$prefix."isp/auth/three/detail";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -155,7 +155,7 @@ class Identify
      */
     public static function bank2(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."bank/auth";
+        $url = $credential->getBaseUrl().self::$prefix."bank/auth";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -180,7 +180,7 @@ class Identify
      */
     public static function bank3(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."bank/auth/three";
+        $url = $credential->getBaseUrl().self::$prefix."bank/auth/three";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -206,7 +206,7 @@ class Identify
      */
     public static function bank3d(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."bank/auth/three/detail";
+        $url = $credential->getBaseUrl().self::$prefix."bank/auth/three/detail";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -232,7 +232,7 @@ class Identify
      */
     public static function bank4(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."bank/auth/four";
+        $url = $credential->getBaseUrl().self::$prefix."bank/auth/four";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -259,7 +259,7 @@ class Identify
      */
     public static function bank4d(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."bank/auth/four/detail";
+        $url = $credential->getBaseUrl().self::$prefix."bank/auth/four/detail";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -286,7 +286,7 @@ class Identify
      */
     public static function idMatch(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."idMatch";
+        $url = $credential->getBaseUrl().self::$prefix."idMatch";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -312,7 +312,7 @@ class Identify
      */
     public static function phoneRealTime(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."phoneRealTime";
+        $url = $credential->getBaseUrl().self::$prefix."phoneRealTime";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -336,7 +336,7 @@ class Identify
      */
     public static function phoneOnlineTime(Credential $credential, models\Identification $identification)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."phoneOnlineTime";
+        $url = $credential->getBaseUrl().self::$prefix."phoneOnlineTime";
         $inputObj = new models\Identification();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());

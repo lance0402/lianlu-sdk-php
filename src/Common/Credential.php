@@ -11,10 +11,17 @@ class Credential
 
     private $isHttp;
 
-    public function __construct($mchId, $appId, $appKey, $isHttp = false){
+    private $endpoint;
+
+    public function __construct($mchId, $appId, $appKey, $endpoint = Constants::DOMAIN_API, $isHttp = false){
+        if (is_bool($endpoint)) {
+            $isHttp = $endpoint;
+            $endpoint = Constants::DOMAIN_API;
+        }
         $this->mchId = $mchId;
         $this->appId = $appId;
         $this->appKey = $appKey;
+        $this->endpoint = $endpoint;
         $this->isHttp = $isHttp;
     }
 
@@ -81,4 +88,37 @@ class Credential
     {
         $this->isHttp = $isHttp;
     }
+
+
+    /**
+     * @return mixed|string
+     */
+    public function getEndpoint()
+    {
+        return $this->endpoint;
+    }
+
+    /**
+     * @param mixed|string $endpoint
+     */
+    public function setEndpoint($endpoint)
+    {
+        $this->endpoint = $endpoint;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBaseUrl()
+    {
+        $url = ($this->isHttp ? Constants::HTTP : Constants::HTTPS) . $this->endpoint;
+
+        // 如果最后不是 / 则添加一个 /
+        if (substr($url, -1) !== '/') {
+            $url .= '/';
+        }
+
+        return $url;
+    }
+
 }

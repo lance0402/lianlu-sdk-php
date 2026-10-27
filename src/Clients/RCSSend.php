@@ -25,7 +25,7 @@ class RCSSend
      */
     public static function NormalSend(Credential $credential, models\RCS $rcs)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."normal/send";
+        $url = $credential->getBaseUrl().self::$prefix."normal/send";
         $inputObj = new models\RCS();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
@@ -59,7 +59,7 @@ class RCSSend
      */
     public static function PersonalSend(Credential $credential, models\RCS $rcs)
     {
-        $url = Constants::HTTPS.Constants::DOMAIN_API.self::$prefix."personal/send";
+        $url = $credential->getBaseUrl().self::$prefix."personal/send";
         $inputObj = new models\RCS();
         $inputObj->SetAppid($credential->GetAppId());
         $inputObj->SetMch_id($credential->GetMchId());
